@@ -6,81 +6,72 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-white">LuxeCars</h3>
-            <p className="text-gray-400">
-              Location de voitures de luxe pour des expériences de conduite exceptionnelles.
-            </p>
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">LuxeCars</h3>
+            <p className="text-gray-400">Location de voitures de luxe pour des expériences inoubliables.</p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <FaFacebookF />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <FaInstagram />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <FaTwitter />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="text-gray-400 hover:text-primary transition-colors">Accueil</a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-primary transition-colors">Nos Véhicules</a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-primary transition-colors">Services</a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-primary transition-colors">Contact</a>
+              </li>
+            </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               <li className="flex items-center text-gray-400">
-                <FaPhone className="mr-3 text-primary" />
-                <span>+33 1 23 45 67 89</span>
+                <FaPhone className="mr-2" />
+                +33 1 23 45 67 89
               </li>
               <li className="flex items-center text-gray-400">
-                <FaEnvelope className="mr-3 text-primary" />
-                <span>contact@luxecars.fr</span>
+                <FaEnvelope className="mr-2" />
+                contact@luxecars.fr
               </li>
               <li className="flex items-center text-gray-400">
-                <FaMapMarkerAlt className="mr-3 text-primary" />
-                <span>123 Avenue des Champs-Élysées, Paris</span>
+                <FaMapMarkerAlt className="mr-2" />
+                123 Avenue des Champs-Élysées, Paris
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Liens Rapides</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/" className="text-gray-400 hover:text-primary transition-colors">
-                  Accueil
-                </Link>
-              </li>
-              <li>
-                <Link href="#vehicles" className="text-gray-400 hover:text-primary transition-colors">
-                  Nos Véhicules
-                </Link>
-              </li>
-              <li>
-                <Link href="#reservation" className="text-gray-400 hover:text-primary transition-colors">
-                  Réservation
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" className="text-gray-400 hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
+            <h4 className="text-lg font-semibold mb-4">Horaires</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>Lundi - Vendredi: 9h - 19h</li>
+              <li>Samedi: 10h - 18h</li>
+              <li>Dimanche: Fermé</li>
             </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Suivez-nous</h4>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                <FaFacebookF className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                <FaInstagram className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                <FaTwitter className="w-6 h-6" />
-              </a>
-            </div>
           </div>
         </div>
-      </div>
 
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-gray-400 text-sm">
-            © {new Date().getFullYear()} LuxeCars. Tous droits réservés.
-          </p>
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; {new Date().getFullYear()} LuxeCars. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
