@@ -59,11 +59,11 @@ export default function ReservationForm() {
           className="max-w-4xl mx-auto"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Réservez Votre Véhicule de Luxe
             </h2>
             <p className="text-xl text-white max-w-2xl mx-auto">
-              Profitez d'une expérience de location sur mesure avec notre service premium
+              Une caution sera demandée pour couvrir les risques potentiels
             </p>
           </div>
 
@@ -85,147 +85,114 @@ export default function ReservationForm() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <label className="flex items-center text-gray-700 text-sm font-medium mb-2">
-                        <FaUser className="mr-2 text-primary" />
+                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                         Nom complet
                       </label>
                       <input
                         type="text"
+                        id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-black"
-                        placeholder="John Doe"
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                        placeholder="Votre nom"
                       />
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
-                    >
-                      <label className="flex items-center text-gray-700 text-sm font-medium mb-2">
-                        <FaEnvelope className="mr-2 text-primary" />
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
                         Email
                       </label>
                       <input
                         type="email"
+                        id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-black"
-                        placeholder="john@example.com"
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                        placeholder="votre@email.com"
                       />
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      <label className="flex items-center text-gray-700 text-sm font-medium mb-2">
-                        <FaPhone className="mr-2 text-primary" />
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
                         Téléphone
                       </label>
                       <input
                         type="tel"
+                        id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-black"
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="+33 6 12 34 56 78"
                       />
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                    >
-                      <label className="flex items-center text-gray-700 text-sm font-medium mb-2">
-                        <FaCarAlt className="mr-2 text-primary" />
+                    <div>
+                      <label htmlFor="carModel" className="block text-sm font-medium text-white mb-2">
                         Modèle de voiture
                       </label>
                       <select
+                        id="carModel"
                         name="carModel"
                         value={formData.carModel}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-black"
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       >
                         <option value="">Sélectionnez un modèle</option>
-                        <option value="gt3rs">Porsche GT3 RS</option>
-                        <option value="brabus5">Mercedes-AMG Brabus 5</option>
+                        <option value="GT3 RS">Porsche GT3 RS</option>
+                        <option value="Brabus 5">Mercedes-AMG Brabus 5</option>
                         <option value="911">Porsche 911</option>
                       </select>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.4 }}
-                    >
-                      <label className="flex items-center text-gray-700 text-sm font-medium mb-2">
-                        <FaCalendarAlt className="mr-2 text-primary" />
+                    <div>
+                      <label htmlFor="startDate" className="block text-sm font-medium text-white mb-2">
                         Date de début
                       </label>
                       <input
                         type="date"
+                        id="startDate"
                         name="startDate"
                         value={formData.startDate}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-black"
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       />
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.5 }}
-                    >
-                      <label className="flex items-center text-gray-700 text-sm font-medium mb-2">
-                        <FaCalendarAlt className="mr-2 text-primary" />
+                    <div>
+                      <label htmlFor="endDate" className="block text-sm font-medium text-white mb-2">
                         Date de fin
                       </label>
                       <input
                         type="date"
+                        id="endDate"
                         name="endDate"
                         value={formData.endDate}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-black"
+                        className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       />
-                    </motion.div>
+                    </div>
                   </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    className="text-center pt-6"
-                  >
+                  <div className="flex justify-center">
                     <button
                       type="submit"
-                      className="flex items-center justify-center bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-xl"
+                      className="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
                     >
-                      <FaCreditCard className="mr-2" />
                       Payer la caution et réserver
                     </button>
-                    <p className="text-sm text-gray-500 mt-4">
-                      Une caution sera demandée pour couvrir les risques potentiels
-                    </p>
-                  </motion.div>
+                  </div>
                 </form>
               )}
             </div>

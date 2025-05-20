@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FaCreditCard } from 'react-icons/fa';
 import { formatPrice } from '../utils/stripe';
+import Link from 'next/link';
 
 interface Car {
   id: number;
@@ -13,6 +14,9 @@ interface Car {
   category: string;
   description: string;
   deposit: number;
+  power: string;
+  acceleration: string;
+  maxSpeed: string;
 }
 
 const cars: Car[] = [
@@ -23,7 +27,10 @@ const cars: Car[] = [
     image: "/images/Gt3rs.jpeg",
     category: "Super Sport",
     description: "La Porsche la plus performante sur piste",
-    deposit: 150000 // 15000€ de caution
+    deposit: 150000, // 15000€ de caution
+    power: "520 ch",
+    acceleration: "3,2 s",
+    maxSpeed: "310 km/h"
   },
   {
     id: 2,
@@ -32,7 +39,10 @@ const cars: Car[] = [
     image: "/images/brabus5.webp",
     category: "Luxe",
     description: "Performance et élégance allemande à l'état pur",
-    deposit: 120000 // 12000€ de caution
+    deposit: 120000, // 12000€ de caution
+    power: "630 ch",
+    acceleration: "3,2 s",
+    maxSpeed: "310 km/h"
   },
   {
     id: 3,
@@ -41,7 +51,10 @@ const cars: Car[] = [
     image: "/images/porsshe.jpg",
     category: "Sport",
     description: "L'icône sportive par excellence",
-    deposit: 100000 // 10000€ de caution
+    deposit: 100000, // 10000€ de caution
+    power: "450 ch",
+    acceleration: "3,4 s",
+    maxSpeed: "295 km/h"
   }
 ];
 
@@ -64,53 +77,56 @@ export default function CarGrid() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {cars.map((car, index) => (
-          <motion.div
-            key={car.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group bg-white rounded-lg border border-gray-200 overflow-hidden transform hover:translate-y-[-8px] transition-all duration-300 shadow-elegant hover:shadow-hover"
-          >
-            <div className="relative h-64 overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8">
+        {cars.map((car) => (
+          <div key={car.id} className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+            <div className="relative h-48 sm:h-56 md:h-64 w-full">
               <Image
                 src={car.image}
                 alt={car.name}
                 fill
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <span className="inline-block px-3 py-1 bg-black/50 text-white rounded-full text-sm font-medium mb-2">
-                  {car.category}
-                </span>
-                <h3 className="text-2xl font-bold text-white drop-shadow-md">{car.name}</h3>
-                <p className="text-sm text-gray-200 mt-1">{car.description}</p>
-              </div>
             </div>
             <div className="p-6">
-              <div className="flex justify-between items-center">
-                <div>
-                  <span className="text-3xl font-bold text-black">
-                    {car.price}
-                  </span>
-                  <span className="text-gray-500 ml-2">TTC</span>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{car.name}</h3>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-2xl font-bold text-primary">{car.price}€</span>
+                <span className="text-sm text-gray-600">/ jour</span>
+              </div>
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center text-gray-600">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span>{car.power}</span>
                 </div>
-                <a 
-                  href="#reservation" 
-                  className="bg-black hover:bg-gray-900 text-white font-bold py-3 px-6 rounded-full transition-all transform hover:scale-105"
-                >
-                  Réserver
-                </a>
+                <div className="flex items-center text-gray-600">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>{car.acceleration}</span>
+                </div>
+                <div className="flex items-center text-gray-600">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                  </svg>
+                  <span>{car.maxSpeed}</span>
+                </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-gray-200 flex items-center text-sm text-gray-500">
-                <FaCreditCard className="mr-2 text-black" />
-                <span>Caution: <strong className="text-black">{formatPrice(car.deposit)}</strong></span>
+              <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+                <span>Caution: {formatPrice(car.deposit)}</span>
+                <span>Kilométrage illimité</span>
               </div>
+              <Link
+                href={`/reservation?car=${car.id}`}
+                className="block w-full bg-primary hover:bg-primary/90 text-white text-center py-3 rounded-lg font-semibold transition-colors duration-300"
+              >
+                Réserver
+              </Link>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
